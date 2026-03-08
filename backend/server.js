@@ -28,7 +28,7 @@ Réponds UNIQUEMENT avec un tableau JSON (pas de texte autour, pas de markdown):
         'anthropic-version': '2023-06-01'
       },
       body: JSON.stringify({
-        model: 'claude-3-5-sonnet-latest',
+        model: 'claude-3-haiku-20240307',
         max_tokens: 2048,
         messages: [{ role: 'user', content: prompt }],
       }),
