@@ -5,11 +5,9 @@ require('dotenv').config();
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-// Middleware
 app.use(cors());
 app.use(express.json());
 
-// Route pour générer des idées de dessin
 app.post('/api/generate-ideas', async (req, res) => {
   try {
     const { types, level, theme, count } = req.body;
@@ -31,12 +29,14 @@ Réponds UNIQUEMENT avec un tableau JSON (pas de texte autour, pas de markdown):
       },
       body: JSON.stringify({
         model: 'claude-3-5-sonnet-20241022',
-        max_tokens: 2500,
+        max_tokens: 2048,
         messages: [{ role: 'user', content: prompt }],
       }),
     });
 
     if (!response.ok) {
+      const errorText = await response.text();
+      console.error('Anthropic API error:', response.status, errorText);
       throw new Error(`API error: ${response.status}`);
     }
 
@@ -64,7 +64,6 @@ Réponds UNIQUEMENT avec un tableau JSON (pas de texte autour, pas de markdown):
   }
 });
 
-// Health check
 app.get('/api/health', (req, res) => {
   res.json({ status: 'ok' });
 });
