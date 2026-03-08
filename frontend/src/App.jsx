@@ -119,7 +119,7 @@ function App() {
           <div style={{ display: "flex", flexDirection: "column", gap: 5 }}>
             <label style={{ fontFamily: "'DM Mono',monospace", fontSize: "0.61rem", letterSpacing: "0.18em", textTransform: "uppercase", color: "#8b6914" }}>Niveau</label>
             <select className="s" value={level} onChange={e => setLevel(e.target.value)}>
-              {["Tous", "Débutant", "Intermédiaire", "Avancé", "Expert"].map(l => <option key={l}>{l}</option>)}
+              {["Tous", "Débutant", "Débutant avancé", "Intermédiaire", "Avancé", "Expert"].map(l => <option key={l}>{l}</option>)}
             </select>
           </div>
           <div style={{ display: "flex", flexDirection: "column", gap: 5 }}>
