@@ -12,13 +12,30 @@ app.post('/api/generate-ideas', async (req, res) => {
   try {
     const { types, level, theme, count } = req.body;
 
-    const prompt = `Génère ${count} idées de dessin créatives.
-Types: ${types}
-Niveau: ${level}
-Thème: ${theme}
+    const timestamp = Date.now();
+const randomSeed = Math.floor(Math.random() * 10000);
 
-Réponds UNIQUEMENT avec un tableau JSON (pas de texte autour, pas de markdown):
-[{"type":"...", "titre":"...", "description":"...", "conseil":"..."}]`;
+const prompt = `Tu es un expert créatif en arts visuels. Génère ${count} idées de dessin ORIGINALES et VARIÉES.
+
+IMPORTANT: Chaque idée doit être UNIQUE et DIFFÉRENTE des concepts classiques. Évite les clichés.
+
+Contexte:
+- Types souhaités: ${types}
+- Niveau technique: ${level}
+- Thème: ${theme}
+- Seed créatif: ${randomSeed} (utilise ce nombre pour varier tes réponses)
+
+Instructions:
+- Sois AUDACIEUX et ORIGINAL dans tes propositions
+- Varie les sujets, angles de vue, et approches
+- Mélange des concepts inattendus
+- Propose des idées qui surprennent et inspirent
+- JAMAIS les mêmes idées deux fois de suite
+
+Format JSON uniquement (pas de markdown):
+[{"type":"...","titre":"...","description":"...","conseil":"..."}]
+
+Génère maintenant ${count} idées complètement différentes et créatives.`;
 
     const response = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
