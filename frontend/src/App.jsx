@@ -31,6 +31,7 @@ function App() {
   const [error, setError] = useState("");
   const [saved, setSaved] = useState([]);
   const [done, setDone] = useState(false);
+  const [size, setSize] = useState("");
 
   const toggle = (id) => setFilters(p => p.includes(id) ? p.filter(f => f !== id) : [...p, id]);
   const toggleSave = (idea) => setSaved(p => p.find(s => s.titre === idea.titre) ? p.filter(s => s.titre !== idea.titre) : [...p, idea]);
