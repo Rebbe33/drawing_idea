@@ -47,10 +47,10 @@ function App() {
 
     try {
       const res = await fetch(`${API_URL}/api/generate-ideas`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ types, level, theme: th, count }),
-      });
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ types, level, theme: th, count, size }),
+});
 
       if (!res.ok) {
         throw new Error(`Erreur serveur: ${res.status}`);
