@@ -10,7 +10,7 @@ app.use(express.json());
 
 app.post('/api/generate-ideas', async (req, res) => {
   try {
-    const { types, level, theme, count } = req.body;
+    const { types, level, theme, count, size } = req.body;
 
     const timestamp = Date.now();
 const randomSeed = Math.floor(Math.random() * 10000);
@@ -23,6 +23,7 @@ Contexte:
 - Types souhaités: ${types}
 - Niveau technique: ${level}
 - Thème: ${theme}
+- Format/Taille: ${size || "libre"}
 - Seed créatif: ${randomSeed} (utilise ce nombre pour varier tes réponses)
 
 Instructions:
