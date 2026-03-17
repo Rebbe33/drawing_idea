@@ -140,6 +140,19 @@ function App() {
               {[3, 5, 8].map(n => <option key={n} value={n}>{n} idées</option>)}
             </select>
           </div>
+          <div style={{ display: "flex", flexDirection: "column", gap: 5 }}>
+  <label style={{ fontFamily: "'DM Mono',monospace", fontSize: "0.61rem", letterSpacing: "0.18em", textTransform: "uppercase", color: "#8b6914" }}>Format</label>
+  <select className="s" value={size} onChange={e => setSize(e.target.value)}>
+    <option value="">Tous formats</option>
+    <option value="petit (A6, carnet)">Petit (A6, carnet)</option>
+    <option value="moyen (A5, A4)">Moyen (A5, A4)</option>
+    <option value="grand (A3, A2)">Grand (A3, A2)</option>
+    <option value="très grand (toile, mural)">Très grand (toile, mural)</option>
+    <option value="format carré">Format carré</option>
+    <option value="format panoramique">Format panoramique</option>
+    <option value="format portrait">Format portrait</option>
+  </select>
+</div>
         </div>
 
         <div style={{ textAlign: "center", marginBottom: 30 }}>
